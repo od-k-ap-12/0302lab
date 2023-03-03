@@ -197,7 +197,7 @@ namespace _0302lab
             {
                 Console.WriteLine("Enter the path: ");
                 string path = Console.ReadLine();
-                StreamReader reader = new StreamReader("Text.txt", Encoding.UTF8);
+                StreamReader reader = new StreamReader(path, Encoding.UTF8);
                 string line;
                 string text = "";
                 while ((line = reader.ReadLine()) != null)
