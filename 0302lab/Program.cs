@@ -145,7 +145,6 @@ namespace _0302lab
                     Console.WriteLine(line);
                     text += line;
                     text += "\n";
-                    Thread.Sleep(100);
                 }
                 reader.Close();
                 int choice;
@@ -205,7 +204,6 @@ namespace _0302lab
                     Console.WriteLine(line);
                     text += line;
                     text += "\n";
-                    Thread.Sleep(100);
                 }
                 reader.Close();
 
@@ -226,44 +224,42 @@ namespace _0302lab
             #region 5
             try
             {
-                StreamWriter nums = new StreamWriter("Numbers.txt", false);
                 StreamWriter pos = new StreamWriter("Positive.txt", false);
                 StreamWriter neg = new StreamWriter("Negative.txt", false);
                 StreamWriter twodig = new StreamWriter("TwoDigit.txt", false);
                 StreamWriter fivedig = new StreamWriter("FiveDigit.txt", false);
+                StreamReader nums = new StreamReader("Numbers.txt", Encoding.UTF8);
                 int poscount = 0, negcount = 0, twodigcount = 0, fivedigcount = 0;
-
-                for (int i = 0; i < 10000; i++)
+                string num;
+                while ((num = nums.ReadLine()) != null)
                 {
-                    int num = r.Next(-100000, 100000);
-                    nums.WriteLine(num);
-                    if (num > 0)
+                    if (Convert.ToInt32(num) > 0)
                     {
                         pos.WriteLine(num);
                         poscount++;
                     }
-                    if (num < 0)
+                    if (Convert.ToInt32(num) < 0)
                     {
                         neg.WriteLine(num);
                         negcount++;
                     }
                     string numstr = Convert.ToString(num);
-                    if (numstr.Length == 2&&num>0)
+                    if (numstr.Length == 2 && Convert.ToInt32(num) > 0)
                     {
                         twodig.WriteLine(num);
                         twodigcount++;
                     }
-                    if (numstr.Length == 3 && num < 0)
+                    if (numstr.Length == 3 && Convert.ToInt32(num) < 0)
                     {
                         twodig.WriteLine(num);
                         twodigcount++;
                     }
-                    if (numstr.Length == 5&&num>0)
+                    if (numstr.Length == 5 && Convert.ToInt32(num) > 0)
                     {
                         fivedig.WriteLine(num);
                         fivedigcount++;
                     }
-                    if (numstr.Length == 6 && num < 0)
+                    if (numstr.Length == 6 && Convert.ToInt32(num) < 0)
                     {
                         fivedig.WriteLine(num);
                         fivedigcount++;
